@@ -1,2 +1,0 @@
-fantasyorder.animasi
-fantasyorder.panelloading

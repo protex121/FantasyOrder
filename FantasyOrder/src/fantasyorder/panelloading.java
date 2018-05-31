@@ -1,6 +1,7 @@
 package fantasyorder;
 
 import java.awt.Color;
+import java.awt.GridBagLayout;
 import java.awt.Toolkit;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -20,6 +21,7 @@ public class panelloading extends javax.swing.JPanel {
         anim = new animasi(jLabel3,lblcounter,btn2);
         anim.start();
         btn2.setEnabled(false);
+        
     }
     
     
