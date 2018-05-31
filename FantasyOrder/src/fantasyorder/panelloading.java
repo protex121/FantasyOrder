@@ -3,6 +3,7 @@ package fantasyorder;
 import java.awt.Color;
 import java.awt.GridBagLayout;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -113,11 +114,10 @@ class animasi extends java.lang.Thread{
         for(int i=0;i<=100;i++){
             ctr.setText(Integer.toString(i)+"%");
             
-            //belum tau caranya pindah panel
             if(i == 100){
                 pindah = true;
                 a.setVisible(true);
-                a.setEnabled(true);              
+                a.setEnabled(true);  
             }
             
             try{
