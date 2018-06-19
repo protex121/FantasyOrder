@@ -1,19 +1,27 @@
 package fantasyorder;
 
 import java.awt.Toolkit;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Frame extends javax.swing.JFrame {
     
     ArrayList<Unit> user = new ArrayList<>();
-    
     /*bagian panel tolong diurutkan disini semua*/
-    panellogin login = new panellogin();
+    panellogin login;
     panelsign sign = new panelsign();
     panelloading load = new panelloading();
     panelgame game = new panelgame();
     
-    public Frame() {
+    public Frame() throws UnsupportedAudioFileException, LineUnavailableException {
+        this.login = new panellogin();
         
         this.setUndecorated(true); //supaya hilangkan window
         this.setResizable(false);   
@@ -31,7 +39,7 @@ public class Frame extends javax.swing.JFrame {
         sign.setVisible(false);
         load.setVisible(false);
         game.setVisible(false);
-        
+        //music(false);
     }
     
     public void goSignIn(){
@@ -47,14 +55,41 @@ public class Frame extends javax.swing.JFrame {
     }
     
     //belum parsing Array
-    public void goLoading(){      
+    public void goLoading() throws LineUnavailableException, UnsupportedAudioFileException{      
         login.setVisible(false);
-        load.setVisible(true);     
+        load.setVisible(true);
+        musicStop();
     }
     
     public void goGame(){
         load.setVisible(false);
         game.setVisible(true);
+    }
+    
+    public static void music() throws UnsupportedAudioFileException, LineUnavailableException{
+        try
+        {
+            Clip clip = AudioSystem.getClip();
+            
+            if(!clip.isActive()){
+                clip.open(AudioSystem.getAudioInputStream(new File("sound/bgm.wav")));
+                clip.loop(Clip.LOOP_CONTINUOUSLY);
+                clip.start();
+            }
+            else{
+                clip.flush();
+                clip.stop();
+            }
+            
+        }
+        catch(IOException e)
+        {
+            System.out.println("cant find the file");
+        }
+    }
+    
+    public static void musicStop() throws LineUnavailableException, UnsupportedAudioFileException{
+        //music();
     }
 
     @SuppressWarnings("unchecked")
@@ -104,7 +139,13 @@ public class Frame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Frame().setVisible(true);
+                try {
+                    new Frame().setVisible(true);
+                } catch (UnsupportedAudioFileException ex) {
+                    Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (LineUnavailableException ex) {
+                    Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
