@@ -4,6 +4,8 @@ public class Unit {
     String username;
     char[] password = new char[100];
     boolean isNew = false;
+    int job;
+    
     
     public Unit(String username,char[] pass) {
         this.username = username;
@@ -25,6 +27,14 @@ public class Unit {
     public void setIsNew(boolean isNew) {
         this.isNew = isNew;
     }    
+
+    public int getJob() {
+        return job;
+    }
+
+    public void setJob(int job) {
+        this.job = job;
+    }
     
     
 }
