@@ -64,17 +64,18 @@ public class panelsign extends javax.swing.JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fantasyorder/bgsingin.png"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 770));
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    //tombol daftar
     private void btndaftarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndaftarActionPerformed
         
         cekUserKembar();
-        
+
         if(isUserKembar == false || isPassKembar == true){
             user.add(new Unit(fielduser.getText(),fieldpass.getPassword()));
             JOptionPane.showMessageDialog(null, "Sukses Mendaftar!");
-            
         }
-        else{         
+        else{
+            cekPassKembar();
             if(isPassKembar == false){
                 JOptionPane.showMessageDialog(null, "Password tidak sama");
             }
@@ -88,7 +89,7 @@ public class panelsign extends javax.swing.JPanel {
         fieldrepass.setText("");
         
     }//GEN-LAST:event_btndaftarActionPerformed
-
+    //tombol kembali ke panel login
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         Frame f = (Frame)this.getParent().getParent().getParent().getParent();
         f.goLogin(user);

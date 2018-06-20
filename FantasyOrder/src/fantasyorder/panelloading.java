@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -11,7 +12,8 @@ import javax.swing.JOptionPane;
 public class panelloading extends javax.swing.JPanel {
    
    animasi anim;
-      
+   //ArrayList<Unit> user = new ArrayList<>();
+   
    public panelloading() {
         initComponents();
         Toolkit tk = Toolkit.getDefaultToolkit();
@@ -44,7 +46,7 @@ public class panelloading extends javax.swing.JPanel {
        if(anim.isPindahGame() == true){
             JOptionPane.showMessageDialog(null, "Berhasil");
             Frame f =(Frame)this.getParent().getParent().getParent().getParent();
-            f.goGame(); //belum parse ARRAYLISTNYA
+            f.goPick();
         }
         else{
             JOptionPane.showMessageDialog(null, "gagal");

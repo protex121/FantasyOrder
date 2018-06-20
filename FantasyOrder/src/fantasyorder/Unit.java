@@ -1,15 +1,20 @@
 package fantasyorder;
 
+import javax.swing.JLabel;
+
 public class Unit {
     String username;
     char[] password = new char[100];
     boolean isNew = false;
     int job;
-    
-    
+        
     public Unit(String username,char[] pass) {
         this.username = username;
         this.password = pass;
+    }
+    
+    public Unit(){
+    
     }
 
     public char[] getPassword() {
