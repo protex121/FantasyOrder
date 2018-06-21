@@ -115,6 +115,7 @@ public class panelpickchar extends javax.swing.JPanel {
     }//GEN-LAST:event_archerActionPerformed
 
     private void priestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priestActionPerformed
+<<<<<<< HEAD
         user.set(index, new Priest());
         System.out.println(user.get(index).getClass().getSimpleName());
         if(user.get(index) instanceof Priest){
@@ -144,6 +145,13 @@ public class panelpickchar extends javax.swing.JPanel {
         for(int i=0;i<user.size();i++){
             System.out.println(user.get(i).username + " - " + user.get(i).password + " - " + user.get(i).isNew);
         }
+=======
+        //pick = 2;
+    }//GEN-LAST:event_priestActionPerformed
+
+    private void warriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_warriorActionPerformed
+        //pick = 3;
+>>>>>>> parent of 72ce2b7... Merge remote-tracking branch 'origin/sion2' into zam
     }//GEN-LAST:event_warriorActionPerformed
     
     //tombol confirm
