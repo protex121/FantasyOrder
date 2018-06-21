@@ -3,25 +3,29 @@ package fantasyorder;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JOptionPane;
 
 public class panellogin extends javax.swing.JPanel {
     
-    
-    
     ArrayList<Unit> user = new ArrayList<>();
     
-    public panellogin() {
-        
+    public panellogin() throws UnsupportedAudioFileException, LineUnavailableException {
         initComponents();
         Toolkit tk = Toolkit.getDefaultToolkit();
         int xsize = (int) tk.getScreenSize().getWidth();
         int ysize = (int) tk.getScreenSize().getHeight();
         this.setSize(xsize, ysize);  
+        //music();
     }
     
     @SuppressWarnings("unchecked")
@@ -85,34 +89,21 @@ public class panellogin extends javax.swing.JPanel {
         user = u;
     }
     
-    //login button 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        //JOptionPane.showMessageDialog(null, "Login...Go To Game....");
-        char[] temp = passfield.getPassword();
-        
-        canLogin();
-        
-        if(login == true){
-            //pindah panel ke panelloading
-            //JOptionPane.showMessageDialog(null, "LOGIN....Please Wait..."); // biar keliatan real mungkin bisa ditambah timer untuk delay sedikit sebelum masuk game
-            Frame f = (Frame)this.getParent().getParent().getParent().getParent();
-            f.goLoading(); //belum parse ARRAYLISTNYA
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "Username/Password Wrong ! Try Again");         
-        }
-        userfield.setText("");
-        passfield.setText("");
-    }//GEN-LAST:event_jButton2ActionPerformed
-    
     int idx = 0;
     boolean login = false;
+    
     private void canLogin(){
         
-        for(int i=0;i<user.size();i++){
-            char[] temp = passfield.getPassword();
+        char[] tempo = passfield.getPassword();
+        String temp="";
             
-            if(user.get(i).getUsername().equals(userfield.getText()) && Arrays.equals(user.get(i).getPassword(), temp)){
+        for(int j=0;j<tempo.length;j++){
+            temp=temp+tempo[j];
+        }
+        
+        for(int i=0;i<user.size();i++){ 
+            
+            if(user.get(i).username.equals(userfield.getText()) && user.get(i).password.equals(temp)){
                 login = true;
                 idx = i;
                 break;
@@ -123,13 +114,38 @@ public class panellogin extends javax.swing.JPanel {
             
         }
     }
-    
+        
+    //login button 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+      
+        canLogin();
+        
+        if(login == true){
+            //pindah panel ke panelloading
+            Frame f = (Frame)this.getParent().getParent().getParent().getParent();
+            try {
+                f.goLoading(idx);
+            } catch (LineUnavailableException ex) {
+                Logger.getLogger(panellogin.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedAudioFileException ex) {
+                Logger.getLogger(panellogin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Username/Password Wrong ! Try Again");         
+        }
+        userfield.setText("");
+        passfield.setText("");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     //Sign In pindah ke panel lain
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Frame f = (Frame)this.getParent().getParent().getParent().getParent();
         f.goSignIn();
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
