@@ -45,13 +45,7 @@ public class Unit {
 
     public void setImage(int ket) {
         if(ket == 1){
-            //ImageIcon im = new ImageIcon("image/walk/archerwalkdown1.png");
-            //Image image = im.getImage(); 
-            //Image newimg = image.getScaledInstance(55, 55, Image.SCALE_SMOOTH);
-            //this.gambar[0][0] = new ImageIcon(newimg);
-            //im = new ImageIcon(newimg); 
-            //this.lblunit = new JLabel(im);
-            //this.lblunit.setBounds(1000,500,55,55);
+            
             ImageIcon raw=new ImageIcon("image/walk/archerwalkup1.png");
             Image img=raw.getImage();
             Image newimg=img.getScaledInstance(55, 55, Image.SCALE_SMOOTH);
@@ -116,13 +110,7 @@ public class Unit {
             this.lblunit.setBounds(500, 250, 55, 55);
         }
         else if(ket == 2){
-            //ImageIcon im = new ImageIcon("image/walk/priestwalkdown1.png");
-            //Image image = im.getImage(); 
-            //Image newimg = image.getScaledInstance(55, 55, Image.SCALE_SMOOTH);
-            //this.gambar[0][0] = new ImageIcon(newimg);
-            //im = new ImageIcon(newimg); 
-            //this.lblunit = new JLabel(im);
-            //this.lblunit.setBounds(1000,500,55,55);
+            
             ImageIcon raw=new ImageIcon("image/walk/priestwalkup1.png");
             Image img=raw.getImage();
             Image newimg=img.getScaledInstance(55, 55, Image.SCALE_SMOOTH);
@@ -187,13 +175,7 @@ public class Unit {
             this.lblunit.setBounds(500, 250, 55, 55);
         }
         else if(ket == 3){
-            //ImageIcon im = new ImageIcon("image/walk/warriorwalkdown1.png");
-            //Image image = im.getImage(); 
-            //Image newimg = image.getScaledInstance(55, 55, Image.SCALE_SMOOTH);
-            //this.gambar[0][0] = new ImageIcon(newimg);
-            //im = new ImageIcon(newimg); 
-            //this.lblunit = new JLabel(im);
-            //this.lblunit.setBounds(1000,500,55,55);
+            
             ImageIcon raw=new ImageIcon("image/walk/warriorwalkup1.png");
             Image img=raw.getImage();
             Image newimg=img.getScaledInstance(55, 55, Image.SCALE_SMOOTH);

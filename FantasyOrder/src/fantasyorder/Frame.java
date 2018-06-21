@@ -125,6 +125,9 @@ public class Frame extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                formKeyReleased(evt);
+            }
         });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -159,6 +162,23 @@ public class Frame extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_formKeyPressed
+
+    private void formKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyReleased
+        char temp = evt.getKeyChar();
+        
+        if(temp == 'w'){
+            game.gerakAtas();
+        }
+        else if(temp == 'a'){
+            game.gerakKiri();
+        }
+        else if(temp == 's'){
+            game.gerakBawah();   
+        }
+        else if(temp == 'd'){
+            game.gerakKanan();
+        }
+    }//GEN-LAST:event_formKeyReleased
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
