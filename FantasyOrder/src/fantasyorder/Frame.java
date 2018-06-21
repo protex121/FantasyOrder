@@ -13,17 +13,21 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Frame extends javax.swing.JFrame {
     
+    //index user yang sedang login
+    int index;
+    //ArrayList user global
     ArrayList<Unit> user = new ArrayList<>();
+    
     /*bagian panel tolong diurutkan disini semua*/
     panellogin login;
     panelsign sign = new panelsign();
     panelloading load = new panelloading();
+    panelpickchar pick = new panelpickchar();
     panelgame game = new panelgame();
     
     public Frame() throws UnsupportedAudioFileException, LineUnavailableException {
         this.login = new panellogin();
-        
-        this.setUndecorated(true); //supaya hilangkan window
+        this.setUndecorated(true); //untuk hilangkan window
         this.setResizable(false);   
         initComponents();
         Toolkit tk = Toolkit.getDefaultToolkit();
@@ -35,13 +39,16 @@ public class Frame extends javax.swing.JFrame {
         this.add(sign);
         this.add(load);
         this.add(game);
+        this.add(pick);
         login.setVisible(true);
         sign.setVisible(false);
         load.setVisible(false);
         game.setVisible(false);
+        pick.setVisible(false);
         //music(false);
     }
     
+    //ke panel signin
     public void goSignIn(){
         sign.setVisible(true);
         login.setVisible(false);
@@ -50,20 +57,35 @@ public class Frame extends javax.swing.JFrame {
     public void goLogin(ArrayList<Unit> u){
         sign.setVisible(false);
         login.setVisible(true);
-        login.parseArray(u); //parsing isi array list USER ke panel login
-        user = u; //hasil parsing isi arraylist user dari signin
+        login.parseArray(u);    //parsing isi array list USER ke panel login
+        user = u;               //mengisi isi ArrayList Global dari panel sign in
     }
     
-    //belum parsing Array
-    public void goLoading() throws LineUnavailableException, UnsupportedAudioFileException{      
+    public void goLoading(int idx) throws LineUnavailableException, UnsupportedAudioFileException{      
         login.setVisible(false);
         load.setVisible(true);
-        musicStop();
+        index = idx;
+        //musicStop();
     }
     
-    public void goGame(){
+    public void goPick(){
         load.setVisible(false);
+        pick.setVisible(true);
+        pick.parsedArrayListInfo(user,index);
+    }
+    
+    public void isiArrayList(){
+        System.out.println("");
+        for(int i=0;i<user.size();i++){
+            System.out.println(user.get(i).username);
+        }
+    }
+    
+    public void goGame(ArrayList<Unit> u){
+        pick.setVisible(false);
         game.setVisible(true);
+        user = u;
+        game.parsedArrayList(user, index);
     }
     
     public static void music() throws UnsupportedAudioFileException, LineUnavailableException{
@@ -97,6 +119,11 @@ public class Frame extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -111,6 +138,25 @@ public class Frame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    //tombol ditekan
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        char temp = evt.getKeyChar();
+        
+        if(temp == 'w'){
+            game.gerakAtas();
+        }
+        else if(temp == 'a'){
+            game.gerakKiri();
+        }
+        else if(temp == 's'){
+            game.gerakBawah();   
+        }
+        else if(temp == 'd'){
+            game.gerakKanan();
+        }
+        
+    }//GEN-LAST:event_formKeyPressed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

@@ -99,7 +99,7 @@ public class panellogin extends javax.swing.JPanel {
             //pindah panel ke panelloading
             Frame f = (Frame)this.getParent().getParent().getParent().getParent();
             try {
-                f.goLoading(); //belum di parse ARRAYLISTNYA
+                f.goLoading(idx);
             } catch (LineUnavailableException ex) {
                 Logger.getLogger(panellogin.class.getName()).log(Level.SEVERE, null, ex);
             } catch (UnsupportedAudioFileException ex) {
