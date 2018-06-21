@@ -32,11 +32,11 @@ public class Frame extends javax.swing.JFrame {
     panelgame game = new panelgame();
     
     public Frame() throws UnsupportedAudioFileException, LineUnavailableException {
-<<<<<<< HEAD
+
         load();
-=======
+
         this.setFocusable(true);
->>>>>>> origin/sion2
+
         this.login = new panellogin();
         this.setUndecorated(true); //untuk hilangkan window
         this.setResizable(false);   
