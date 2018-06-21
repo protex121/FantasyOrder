@@ -12,7 +12,8 @@ import javax.swing.JOptionPane;
 public class panelloading extends javax.swing.JPanel {
    
    animasi anim;
-   //ArrayList<Unit> user = new ArrayList<>();
+   ArrayList<Unit> user = new ArrayList<>();
+   int index;
    
    public panelloading() {
         initComponents();
@@ -42,15 +43,35 @@ public class panelloading extends javax.swing.JPanel {
         
     }
    
+    public void parseArray(ArrayList<Unit> u, int index){
+        user = u;
+        this.index = index;
+    }
+   
    private void pindah(){
-       if(anim.isPindahGame() == true){
-            JOptionPane.showMessageDialog(null, "Berhasil");
-            Frame f =(Frame)this.getParent().getParent().getParent().getParent();
-            f.goPick();
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "gagal");
-        }
+       if(user.get(index).isNew==false){
+            //if(anim.isPindahGame() == true){
+                JOptionPane.showMessageDialog(null, "Berhasil");
+                Frame f =(Frame)this.getParent().getParent().getParent().getParent();
+                f.goPick();
+                f.passVar(user);
+            //}
+            //else{
+                //JOptionPane.showMessageDialog(null, "gagal");
+            //}
+       }
+       else if (user.get(index).isNew==true){
+            //if(anim.isPindahGame() == true){
+                JOptionPane.showMessageDialog(null, "Berhasil");
+                Frame f =(Frame)this.getParent().getParent().getParent().getParent();
+                f.goGame(user);
+                f.passVar(user);
+            //}
+            //else{
+                //JOptionPane.showMessageDialog(null, "gagal");
+            //}
+       }
+       
    }
     
     

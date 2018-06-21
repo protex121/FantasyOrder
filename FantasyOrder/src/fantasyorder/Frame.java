@@ -32,11 +32,8 @@ public class Frame extends javax.swing.JFrame {
     panelgame game = new panelgame();
     
     public Frame() throws UnsupportedAudioFileException, LineUnavailableException {
-<<<<<<< HEAD
         load();
-=======
         this.setFocusable(true);
->>>>>>> origin/sion2
         this.login = new panellogin();
         this.setUndecorated(true); //untuk hilangkan window
         this.setResizable(false);   
@@ -76,6 +73,8 @@ public class Frame extends javax.swing.JFrame {
     public void goLoading(int idx) throws LineUnavailableException, UnsupportedAudioFileException{      
         login.setVisible(false);
         load.setVisible(true);
+        System.out.println(user.get(idx).isNew);
+        load.parseArray(this.user,idx);
         index = idx;
         //musicStop();
     }
@@ -155,7 +154,7 @@ public class Frame extends javax.swing.JFrame {
                     e.printStackTrace();
                 }
         for(int i=0;i<user.size();i++){
-            System.out.println(user.get(i).username + " - " + user.get(i).password);
+            System.out.println(user.get(i).username + " - " + user.get(i).password + " - " + user.get(i).isNew);
         }
     }
 

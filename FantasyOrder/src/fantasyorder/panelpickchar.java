@@ -102,9 +102,14 @@ public class panelpickchar extends javax.swing.JPanel {
         System.out.println(user.get(index).getClass().getSimpleName());
         if(user.get(index) instanceof Archer){
             user.get(index).setImage(1);
+            user.get(index).isNew=true;
         }
         else{
             System.out.println("gagal");
+        }
+        
+        for(int i=0;i<user.size();i++){
+            System.out.println(user.get(i).username + " - " + user.get(i).password + " - " + user.get(i).isNew);
         }
         
     }//GEN-LAST:event_archerActionPerformed
@@ -114,9 +119,14 @@ public class panelpickchar extends javax.swing.JPanel {
         System.out.println(user.get(index).getClass().getSimpleName());
         if(user.get(index) instanceof Priest){
             user.get(index).setImage(2);
+            user.get(index).isNew=true;
         }
         else{
             System.out.println("gagal");
+        }
+        
+        for(int i=0;i<user.size();i++){
+            System.out.println(user.get(i).username + " - " + user.get(i).password + " - " + user.get(i).isNew);
         }
     }//GEN-LAST:event_priestActionPerformed
 
@@ -125,15 +135,21 @@ public class panelpickchar extends javax.swing.JPanel {
         System.out.println(user.get(index).getClass().getSimpleName());
         if(user.get(index) instanceof Warrior){
             user.get(index).setImage(3);
+            user.get(index).isNew=true;
         }
         else{
             System.out.println("gagal");
+        }
+        
+        for(int i=0;i<user.size();i++){
+            System.out.println(user.get(i).username + " - " + user.get(i).password + " - " + user.get(i).isNew);
         }
     }//GEN-LAST:event_warriorActionPerformed
     
     //tombol confirm
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Frame f = (Frame)this.getParent().getParent().getParent().getParent();
+        f.passVar(user);
         f.goGame(user);
     }//GEN-LAST:event_jButton2ActionPerformed
 
