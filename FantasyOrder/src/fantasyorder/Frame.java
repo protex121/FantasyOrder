@@ -12,6 +12,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Frame extends javax.swing.JFrame {
+
     
     //index user yang sedang login
     int index;
@@ -26,6 +27,7 @@ public class Frame extends javax.swing.JFrame {
     panelgame game = new panelgame();
     
     public Frame() throws UnsupportedAudioFileException, LineUnavailableException {
+        this.setFocusable(true);
         this.login = new panellogin();
         this.setUndecorated(true); //untuk hilangkan window
         this.setResizable(false);   

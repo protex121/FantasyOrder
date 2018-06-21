@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class panelgame extends javax.swing.JPanel {
-    
+
     ArrayList<Unit> user = new ArrayList<>();
     public panelgame() {
         initComponents();
