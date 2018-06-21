@@ -69,10 +69,17 @@ public class panelsign extends javax.swing.JPanel {
     private void btndaftarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndaftarActionPerformed
         
         cekUserKembar();
-
-        if(isUserKembar == false || isPassKembar == true){
-            user.add(new Unit(fielduser.getText(),fieldpass.getPassword()));
+        String temp="";
+        char[] tempass = fieldpass.getPassword();
+        if(isUserKembar == false){ //|| isPassKembar == true){
+            for(int i=0;i<tempass.length;i++){
+                temp = temp+tempass[i];
+            }
+            user.add(new Unit(fielduser.getText(),temp));
             JOptionPane.showMessageDialog(null, "Sukses Mendaftar!");
+            
+            Frame f = (Frame)this.getParent().getParent().getParent().getParent();
+            f.passVar(user);
         }
         else{
             cekPassKembar();
@@ -86,8 +93,8 @@ public class panelsign extends javax.swing.JPanel {
         
         fielduser.setText("");
         fieldpass.setText("");
-        fieldrepass.setText("");
-        
+        fieldrepass.setText("");        
+       
     }//GEN-LAST:event_btndaftarActionPerformed
     //tombol kembali ke panel login
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed

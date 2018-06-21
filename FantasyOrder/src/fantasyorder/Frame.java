@@ -2,7 +2,11 @@ package fantasyorder;
 
 import java.awt.Toolkit;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -10,6 +14,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.JOptionPane;
 
 public class Frame extends javax.swing.JFrame {
     
@@ -26,6 +31,7 @@ public class Frame extends javax.swing.JFrame {
     panelgame game = new panelgame();
     
     public Frame() throws UnsupportedAudioFileException, LineUnavailableException {
+        load();
         this.login = new panellogin();
         this.setUndecorated(true); //untuk hilangkan window
         this.setResizable(false);   
@@ -40,6 +46,7 @@ public class Frame extends javax.swing.JFrame {
         this.add(load);
         this.add(game);
         this.add(pick);
+        login.parseArray(this.user);
         login.setVisible(true);
         sign.setVisible(false);
         load.setVisible(false);
@@ -57,8 +64,8 @@ public class Frame extends javax.swing.JFrame {
     public void goLogin(ArrayList<Unit> u){
         sign.setVisible(false);
         login.setVisible(true);
-        login.parseArray(u);    //parsing isi array list USER ke panel login
-        user = u;               //mengisi isi ArrayList Global dari panel sign in
+        login.parseArray(this.user);    //parsing isi array list USER ke panel login
+        //user = u;               //mengisi isi ArrayList Global dari panel sign in
     }
     
     public void goLoading(int idx) throws LineUnavailableException, UnsupportedAudioFileException{      
@@ -88,6 +95,12 @@ public class Frame extends javax.swing.JFrame {
         game.parsedArrayList(user, index);
     }
     
+    public void passVar(ArrayList<Unit> u){
+        user = u;
+        save();
+        
+    }
+    
     public static void music() throws UnsupportedAudioFileException, LineUnavailableException{
         try
         {
@@ -112,6 +125,33 @@ public class Frame extends javax.swing.JFrame {
     
     public static void musicStop() throws LineUnavailableException, UnsupportedAudioFileException{
         //music();
+    }
+    
+    public void save(){
+        try{
+            FileOutputStream fileout=new FileOutputStream("user.txt");
+            ObjectOutputStream out=new ObjectOutputStream(fileout);
+            out.writeObject(user);
+            out.close();
+            fileout.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void load(){
+        try{
+                    FileInputStream filein=new FileInputStream("user.txt");
+                    ObjectInputStream in=new ObjectInputStream(filein);
+                    user=(ArrayList<Unit>) in.readObject();
+                    in.close();
+                    filein.close();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+        for(int i=0;i<user.size();i++){
+            System.out.println(user.get(i).username + " - " + user.get(i).password);
+        }
     }
 
     @SuppressWarnings("unchecked")

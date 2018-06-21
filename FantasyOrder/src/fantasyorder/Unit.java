@@ -1,19 +1,20 @@
 package fantasyorder;
 
 import java.awt.Image;
+import java.io.Serializable;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public class Unit {
+public class Unit implements Serializable{
     JLabel lblunit = new JLabel();
     ImageIcon[][] gambar = new ImageIcon[4][3];
     
     String username;
-    char[] password = new char[100];
+    String password = new String();
     boolean isNew = false;
     int job;
     
-    public Unit(String username,char[] pass) {
+    public Unit(String username,String pass) {
         this.username = username;
         this.password = pass;
     }
@@ -23,7 +24,7 @@ public class Unit {
     }
     
 
-    public char[] getPassword() {
+    public String getPassword() {
         return password;
     }
 

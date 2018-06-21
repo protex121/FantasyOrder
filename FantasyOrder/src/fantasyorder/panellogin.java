@@ -89,10 +89,35 @@ public class panellogin extends javax.swing.JPanel {
         user = u;
     }
     
+    int idx = 0;
+    boolean login = false;
+    
+    private void canLogin(){
+        
+        char[] tempo = passfield.getPassword();
+        String temp="";
+            
+        for(int j=0;j<tempo.length;j++){
+            temp=temp+tempo[j];
+        }
+        
+        for(int i=0;i<user.size();i++){ 
+            
+            if(user.get(i).username.equals(userfield.getText()) && user.get(i).password.equals(temp)){
+                login = true;
+                idx = i;
+                break;
+            }
+            else{
+                login = false;
+            }
+            
+        }
+    }
+        
     //login button 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
-        char[] temp = passfield.getPassword();        
+      
         canLogin();
         
         if(login == true){
@@ -112,26 +137,7 @@ public class panellogin extends javax.swing.JPanel {
         userfield.setText("");
         passfield.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
-    
-    int idx = 0;
-    boolean login = false;
-    private void canLogin(){
-        
-        for(int i=0;i<user.size();i++){
-            char[] temp = passfield.getPassword();
-            
-            if(user.get(i).getUsername().equals(userfield.getText()) && Arrays.equals(user.get(i).getPassword(), temp)){
-                login = true;
-                idx = i;
-                break;
-            }
-            else{
-                login = false;
-            }
-            
-        }
-    }
-    
+
     //Sign In pindah ke panel lain
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Frame f = (Frame)this.getParent().getParent().getParent().getParent();

@@ -1,11 +1,12 @@
 package fantasyorder;
 
 import java.awt.Image;
+import java.io.Serializable;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-public class Archer extends Unit{
+public class Archer extends Unit implements Serializable{
     //JLabel lblunit;
     
     public Archer(){
