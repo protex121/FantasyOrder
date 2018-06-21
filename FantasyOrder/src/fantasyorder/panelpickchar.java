@@ -21,6 +21,7 @@ public class panelpickchar extends javax.swing.JPanel {
     public void parsedArrayListInfo(ArrayList<Unit> u,int idx){
         user = u;
         index = idx;
+        System.out.println(user.get(index).getClass().getSimpleName());
     }
 
     @SuppressWarnings("unchecked")
@@ -98,7 +99,14 @@ public class panelpickchar extends javax.swing.JPanel {
 
     private void archerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_archerActionPerformed
         user.set(index, new Archer());
-        //System.out.println("username : " + user.get(index).getUsername());
+        System.out.println(user.get(index).getClass().getSimpleName());
+        if(user.get(index) instanceof Archer){
+            user.get(index).setImage(1);
+        }
+        else{
+            System.out.println("gagal");
+        }
+        
     }//GEN-LAST:event_archerActionPerformed
 
     private void priestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priestActionPerformed

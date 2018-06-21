@@ -10,18 +10,13 @@ import javax.swing.JLabel;
 public class panelgame extends javax.swing.JPanel {
     
     ArrayList<Unit> user = new ArrayList<>();
-    
-    Archer arc; //belum berasal dari database
-    
     public panelgame() {
-        //initComponents(); kalau initComponentnya di unremark bakalah error
+        initComponents();
         
         Toolkit tk = Toolkit.getDefaultToolkit();
         int xsize = (int) tk.getScreenSize().getWidth();
         int ysize = (int) tk.getScreenSize().getHeight();
         this.setSize(xsize, ysize);
-        arc = new Archer();
-        this.add(arc.lblunit);
         
         //background
         /*ImageIcon imageIcon = new ImageIcon("image/entahlah/Village Map.png");
@@ -44,12 +39,6 @@ public class panelgame extends javax.swing.JPanel {
         a.setIcon(imageIcon);*/
     }
     
-    public void gerakBawah(){
-        if(arc.lblunit.getY()+50<700){
-            arc.lblunit.setLocation(arc.lblunit.getX(), arc.lblunit.getX()+50);
-        }
-    }
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -62,6 +51,37 @@ public class panelgame extends javax.swing.JPanel {
     public void parsedArrayList(ArrayList<Unit> u,int idx){
         user = u;
         index = idx; 
+        this.add(user.get(index).lblunit);
+    }
+    
+    int ctr = 0 ;
+    int ctr2= 1;
+    public void gerakBawah(){
+        user.get(index).lblunit.setLocation(user.get(index).lblunit.getX(), user.get(index).lblunit.getY()+25);
+        user.get(index).lblunit.setIcon(user.get(index).gambar[1][ctr]);
+        /*if(ctr == 0){
+            ctr+=ctr2;
+        }
+        else if(ctr == 1){
+            ctr+=ctr2;
+        }
+        else if(ctr == 2){
+            ctr+=ctr2;
+            ctr2*=-1;
+        }*/
+        
+    }
+    public void gerakAtas(){
+        user.get(index).lblunit.setLocation(user.get(index).lblunit.getX(), user.get(index).lblunit.getY()-25);
+        user.get(index).lblunit.setIcon(user.get(index).gambar[0][ctr]);
+    }
+    public void gerakKiri(){
+        user.get(index).lblunit.setLocation(user.get(index).lblunit.getX()-25, user.get(index).lblunit.getY());
+        user.get(index).lblunit.setIcon(user.get(index).gambar[2][ctr]);
+    }
+    public void gerakKanan(){
+        user.get(index).lblunit.setLocation(user.get(index).lblunit.getX()+25, user.get(index).lblunit.getY());
+        user.get(index).lblunit.setIcon(user.get(index).gambar[3][ctr]);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

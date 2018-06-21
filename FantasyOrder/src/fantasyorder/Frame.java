@@ -59,17 +59,13 @@ public class Frame extends javax.swing.JFrame {
         login.setVisible(true);
         login.parseArray(u);    //parsing isi array list USER ke panel login
         user = u;               //mengisi isi ArrayList Global dari panel sign in
-        //index = login.idx;
-        //System.out.println(login.idx);
     }
     
     public void goLoading(int idx) throws LineUnavailableException, UnsupportedAudioFileException{      
         login.setVisible(false);
         load.setVisible(true);
         index = idx;
-        //System.out.println(index);
         //musicStop();
-        //isiArrayList();
     }
     
     public void goPick(){
@@ -142,13 +138,24 @@ public class Frame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    //tombol ditekan
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         char temp = evt.getKeyChar();
         
-        if(temp == 's'){
-            game.gerakBawah();
+        if(temp == 'w'){
+            game.gerakAtas();
         }
+        else if(temp == 'a'){
+            game.gerakKiri();
+        }
+        else if(temp == 's'){
+            game.gerakBawah();   
+        }
+        else if(temp == 'd'){
+            game.gerakKanan();
+        }
+        
     }//GEN-LAST:event_formKeyPressed
 
     public static void main(String args[]) {
