@@ -4,7 +4,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public class Archer extends Unit{
+public class Archer{
     JLabel lblunit;
     
     public Archer(){
@@ -14,6 +14,6 @@ public class Archer extends Unit{
         Image newimg = image.getScaledInstance(55, 55, Image.SCALE_SMOOTH);
         im = new ImageIcon(newimg); 
         this.lblunit = new JLabel(im);
-        this.lblunit.setBounds(500,250,55,55);
+        this.lblunit.setBounds(1000,1000,55,55);
     }
 }

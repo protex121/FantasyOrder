@@ -2,9 +2,9 @@ package fantasyorder;
 
 import java.awt.Toolkit;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class panelpickchar extends javax.swing.JPanel {
-
 
     ArrayList<Unit> user = new ArrayList<>();    
     int index;
@@ -97,8 +97,7 @@ public class panelpickchar extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void archerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_archerActionPerformed
-        user.set(index, new Archer());
-        //System.out.println("username : " + user.get(index).getUsername());
+        JOptionPane.showMessageDialog(null, "tes");
     }//GEN-LAST:event_archerActionPerformed
 
     private void priestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priestActionPerformed

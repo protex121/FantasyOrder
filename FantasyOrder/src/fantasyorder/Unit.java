@@ -1,7 +1,5 @@
 package fantasyorder;
 
-import javax.swing.JLabel;
-
 public class Unit {
     String username;
     char[] password = new char[100];
