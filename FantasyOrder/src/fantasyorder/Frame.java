@@ -59,12 +59,15 @@ public class Frame extends javax.swing.JFrame {
         login.setVisible(true);
         login.parseArray(u);    //parsing isi array list USER ke panel login
         user = u;               //mengisi isi ArrayList Global dari panel sign in
+        //index = login.idx;
+        //System.out.println(login.idx);
     }
     
     public void goLoading(int idx) throws LineUnavailableException, UnsupportedAudioFileException{      
         login.setVisible(false);
         load.setVisible(true);
         index = idx;
+        //System.out.println(index);
         //musicStop();
         //isiArrayList();
     }
@@ -82,11 +85,11 @@ public class Frame extends javax.swing.JFrame {
         }
     }
     
-    public void goGame(ArrayList<Unit> u){ 
-        user = u;
-        game.parsedArrayList(user, index);
+    public void goGame(ArrayList<Unit> u){
         pick.setVisible(false);
         game.setVisible(true);
+        user = u;
+        game.parsedArrayList(user, index);
     }
     
     public static void music() throws UnsupportedAudioFileException, LineUnavailableException{
@@ -120,6 +123,11 @@ public class Frame extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -134,6 +142,14 @@ public class Frame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        char temp = evt.getKeyChar();
+        
+        if(temp == 's'){
+            game.gerakBawah();
+        }
+    }//GEN-LAST:event_formKeyPressed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
