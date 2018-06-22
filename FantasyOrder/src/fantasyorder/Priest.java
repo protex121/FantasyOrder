@@ -5,11 +5,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-public class Archer extends Unit{
+public class Priest extends Unit{
     //JLabel lblunit;
     
-    public Archer(){
-        JOptionPane.showMessageDialog(null, "sukses archer");
+    public Priest(){
+        JOptionPane.showMessageDialog(null, "sukses priest");
         /*this.lblunit = new JLabel();
         ImageIcon im = new ImageIcon("image/walk/archerwalkdown1.png");
         Image image = im.getImage(); 
